@@ -17,10 +17,12 @@ namespace PROJECT.DAL.Repositories.Abstracts
         IQueryable<T> GetPassives();
 
         //Modify Commands: Task bir komutu void tipinde fakat asenkron bir şekilde çalışacağını belirtir.
-        Task Add(T item);
-        Task AddRange(List<T> list);
-        void Update(T item);
-        void UpdateRange(List<T> list);
+        void Add(T item);
+
+        Task AddAsync(T item);  
+        Task AddRangeAsync(List<T> list);
+        Task UpdateAsync(T item);
+        Task UpdateRangeAsync(List<T> list);
         void Delete(T item);
         void DeleteRange(List<T> list);
 
@@ -31,17 +33,17 @@ namespace PROJECT.DAL.Repositories.Abstracts
         //Linq Commands
 
         IQueryable<T> Where(Expression<Func<T,bool>> exp);
-        bool Any(Expression<Func<T,bool>> exp);
+        Task<bool> AnyAsync(Expression<Func<T,bool>> exp);
 
         //Bir ifade ağacı oluşturulur. Bu ağaçta T türündeki bir nesnenin uygulanacağı sorguya istinaden bir boolean değer döneceği ifade edilir.
-        T FirstOrDefault(Expression<Func<T, bool>> exp);
+        Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> exp);
 
         //Burada ise Select metodu veritabanı tablolarından elde edilmek istenen verilerin yapılan sorguya göre getirileceği bir metot olduğu için T değil X yani dönüştürülmüş değer (projeksiyonlanmış veya değişime uğramış değer) şeklinde ifade ederiz.
         IQueryable<X> Select<X>(Expression<Func<T,X>> exp);
 
         //Find
 
-        Task<T> Find(int id);
+        Task<T> FindAsync(int id);
 
 
        
