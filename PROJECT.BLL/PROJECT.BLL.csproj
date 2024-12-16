@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -7,8 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PROJECT.DAL\PROJECT.DAL.csproj" />
-    <ProjectReference Include="..\PROJECT.ENTITIES\PROJECT.ENTITIES.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <ProjectReference Include="..\PROJECT.DAL\PROJECT.DAL.csproj">
+		  <PrivateAssets>All</PrivateAssets>
+	  </ProjectReference>
+		  
+	
   </ItemGroup>
 
 </Project>
